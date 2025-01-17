@@ -3,7 +3,7 @@
   "displayName": "cpp-header-source-pair",
   "description": "A simple plugin to open header files along side source files for C/C++ projects.",
   "version": "1.0.0",
-  "publisher": "Beadman Studios",
+  "publisher": "spalt_er",
   "engines": {
     "vscode": "^1.96.0"
   },
