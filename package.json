@@ -2,8 +2,8 @@
   "name": "cpp-header-source-pair",
   "displayName": "cpp-header-source-pair",
   "description": "A simple plugin to open header files along side source files for C/C++ projects.",
-  "version": "1.0.0",
-  "publisher": "spalt_er",
+  "version": "1.0.1",
+  "publisher": "spalter",
   "engines": {
     "vscode": "^1.96.0"
   },
@@ -11,7 +11,12 @@
     "Programming Languages",
     "Other"
   ],
-  "keywords": ["cpp", "header", "source", "pairing"],
+  "keywords": [
+    "cpp",
+    "header",
+    "source",
+    "pairing"
+  ],
   "icon": "icon.png",
   "activationEvents": [],
   "main": "./out/extension.js",
@@ -25,7 +30,22 @@
         "command": "cpp-header-source-pair.openPairs",
         "title": "Open Pairs (C/C++ Header/Source)"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "C/C++ Header/Source Pair",
+      "properties": {
+        "cpp-header-source-pair.preserveFocus": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to preserve focus on the editor after opening a pair."
+        },
+        "cpp-header-source-pair.preview": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to preview the file before pinning it."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

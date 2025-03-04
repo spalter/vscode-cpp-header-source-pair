@@ -21,6 +21,9 @@ function getPairedFile(currentFile: string, isHeader: boolean): string {
 async function openPairs(textDocument: vscode.TextDocument) {
 	const currentFile = textDocument.fileName;
 
+	const preserveFocus = vscode.workspace.getConfiguration('cpp-header-source-pair').get('preserveFocus', true);
+	const preview = vscode.workspace.getConfiguration('cpp-header-source-pair').get('preview', false);
+
 	console.log(`Opening ${textDocument.fileName}`);
 	const isHeader: boolean = isHeaderFile(currentFile);
 	const pairedFile: string = getPairedFile(currentFile, isHeader);
@@ -37,13 +40,15 @@ async function openPairs(textDocument: vscode.TextDocument) {
 		const headerDoc = await vscode.workspace.openTextDocument(headerFile);
 		await vscode.window.showTextDocument(headerDoc, {
 			viewColumn: vscode.ViewColumn.One,
-			preserveFocus: true
+			preserveFocus: true,
+			preview: preview
 		});
 
 		const sourceDoc = await vscode.workspace.openTextDocument(sourceFile);
 		await vscode.window.showTextDocument(sourceDoc, {
 			viewColumn: vscode.ViewColumn.Two,
-			preserveFocus: false
+			preserveFocus: preserveFocus,
+			preview: preview
 		});
 	}
 	console.log(`Current: ${currentFile}, Paired: ${pairedFile}, IsHeader:${isHeader}`);
